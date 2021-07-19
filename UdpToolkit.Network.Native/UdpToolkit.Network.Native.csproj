@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageId>UdpToolkit.Network.Native</PackageId>
+    <Version>$(PACKAGE_VERSION)</Version>
+    <Authors>Timofey Myagkikh</Authors>
+  </PropertyGroup>
+  
+  <ItemGroup>
+
+    <Content Include="runtimes\**\*">
+      <Pack>true</Pack>
+      <PackagePath>runtimes\</PackagePath>
+    </Content>
+    
+    <None Update="runtimes\**" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="Always" />
+  </ItemGroup>
+  
+</Project>
