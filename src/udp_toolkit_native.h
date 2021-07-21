@@ -14,6 +14,7 @@
     #include <netinet/in.h>
     #include <sys/select.h>
     #include <unistd.h>
+    #include <fcntl.h>
 
     #define UDP_TOOLKIT extern
 
@@ -114,4 +115,19 @@ UDP_TOOLKIT int udp_toolkit_send(int socket, const Ipv4Address* address, const u
     };
 
     return sendto(socket, (const char*)buffer, length, 0, (address != NULL ? (struct sockaddr*)&dest : NULL), sizeof(dest));
+}
+
+UDP_TOOLKIT int udp_toolkit_set_nonblocking(int socket) {
+    #ifdef _WIN32
+        unsigned long on = 1;
+        if (ioctlsocket(socket, FIONBIO, &on) != 0) {
+            return -1;
+        }
+    #else
+        if (fcntl(socket, F_SETFL, fcntl(socket, F_GETFL, 0) | O_NONBLOCK) < 0) {
+            return -1;
+        }
+    #endif
+
+    return 1;
 }
