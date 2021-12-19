@@ -40,12 +40,14 @@ UDP_TOOLKIT int udp_toolkit_startup() {
         return -1;
     }
 #endif
+    return 1;
 }
 
 UDP_TOOLKIT int udp_toolkit_cleanup() {
 #ifdef _WIN32
     WSACleanup();
 #endif
+    return 1;
 }
 
 UDP_TOOLKIT void udp_toolkit_print_ip(Ipv4Address* address) {

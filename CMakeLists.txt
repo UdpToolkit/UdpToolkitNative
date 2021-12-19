@@ -1,12 +1,22 @@
 cmake_minimum_required(VERSION 3.16.3)
 
-project(udp_toolkit_native LANGUAGES C)
-
-add_library(udp_toolkit_native SHARED src/udp_toolkit_native.c)
-set_target_properties(udp_toolkit_native PROPERTIES PREFIX "")
-
-if($ENV{TARGET_OS} STREQUAL "win")
-
+if($ENV{TARGET_OS} STREQUAL "macos" OR $ENV{TARGET_OS} STREQUAL "linux" OR $ENV{TARGET_OS} STREQUAL "android-armv8" OR $ENV{TARGET_OS} STREQUAL "android-armv7")
+    project(udp_toolkit_native LANGUAGES C)
+    
+    add_library(udp_toolkit_native SHARED src/udp_toolkit_native.c)
+    set_target_properties(udp_toolkit_native PROPERTIES PREFIX "")
+elseif ($ENV{TARGET_OS} STREQUAL "ios")
+    project(udp_toolkit_native LANGUAGES C)
+    
+    add_library(udp_toolkit_native SHARED src/udp_toolkit_native.c)
+    set_target_properties(udp_toolkit_native PROPERTIES PREFIX "")
+        
+    set(CMAKE_XCODE_ATTRIBUTE_DEVELOPMENT_TEAM  $ENV{APPLE_DEVELOPMENT_TEAM})
+elseif ($ENV{TARGET_OS} STREQUAL "win")
+    project(udp_toolkit_native LANGUAGES C)
+    
+    add_library(udp_toolkit_native SHARED src/udp_toolkit_native.c)
+    set_target_properties(udp_toolkit_native PROPERTIES PREFIX "")
 
     set(CMAKE_SYSTEM_NAME Windows)
     set(TOOLCHAIN_PREFIX x86_64-w64-mingw32)
