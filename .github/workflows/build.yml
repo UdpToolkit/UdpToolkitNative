@@ -102,18 +102,13 @@ jobs:
           path: ./build/${{ env.TARGET_OS }}/*.dylib
           
   ios:
-    if: ${{ false }}  # disable for now
     runs-on: macos-latest
     env:
       TARGET_OS: ios
-      APPLE_DEVELOPMENT_TEAM: ${{ secrets.APPLE_DEVELOPMENT_TEAM }}
     steps:
       - name: Checkout project
         uses: actions/checkout@v2
-  
-      - name: Install cmake
-        run: brew install cmake
-  
+
       - name: Build
         run: ./build_native.sh
   

@@ -5,13 +5,6 @@ if($ENV{TARGET_OS} STREQUAL "macos" OR $ENV{TARGET_OS} STREQUAL "linux" OR $ENV{
     
     add_library(udp_toolkit_native SHARED src/udp_toolkit_native.c)
     set_target_properties(udp_toolkit_native PROPERTIES PREFIX "")
-elseif ($ENV{TARGET_OS} STREQUAL "ios")
-    project(udp_toolkit_native LANGUAGES C)
-    
-    add_library(udp_toolkit_native SHARED src/udp_toolkit_native.c)
-    set_target_properties(udp_toolkit_native PROPERTIES PREFIX "")
-        
-    set(CMAKE_XCODE_ATTRIBUTE_DEVELOPMENT_TEAM  $ENV{APPLE_DEVELOPMENT_TEAM})
 elseif ($ENV{TARGET_OS} STREQUAL "win")
     project(udp_toolkit_native LANGUAGES C)
     
