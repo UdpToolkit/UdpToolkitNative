@@ -15,6 +15,7 @@
     #include <sys/select.h>
     #include <unistd.h>
     #include <fcntl.h>
+    #include <arpa/inet.h>
 
     #define UDP_TOOLKIT extern
 
@@ -132,4 +133,25 @@ UDP_TOOLKIT int udp_toolkit_set_nonblocking(int socket) {
     #endif
 
     return 1;
+}
+
+UDP_TOOLKIT char *to_string(int ip) {
+    struct in_addr ip_addr;
+    ip_addr.s_addr = ip;
+    return inet_ntoa(ip_addr);
+}
+
+UDP_TOOLKIT int to_int(char *addr) {
+#ifdef _WIN32
+    return inet_addr(addr);
+#else
+    struct in_addr in;
+    int result = inet_aton(addr, (struct in_addr *) &in.s_addr);
+    if (result == 0)
+    {
+        return -1;
+    }
+
+    return in.s_addr;
+#endif
 }
