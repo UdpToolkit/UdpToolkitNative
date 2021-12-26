@@ -8,8 +8,8 @@ mkdir -p ./UdpToolkit.Network.Native/runtimes/linux-x64/native
 mkdir -p ./UdpToolkit.Network.Native/runtimes/linux-arm64/native
 
 # mobile platforms
-mkdir -p ./UdpToolkit.Network.Native/runtimes/arm-v7/native
-mkdir -p ./UdpToolkit.Network.Native/runtimes/arm-v8/native
+mkdir -p ./UdpToolkit.Network.Native/runtimes/android-armv7/native
+mkdir -p ./UdpToolkit.Network.Native/runtimes/android-armv8/native
 mkdir -p ./UdpToolkit.Network.Native/runtimes/ios/native
 
 # desktop platforms
