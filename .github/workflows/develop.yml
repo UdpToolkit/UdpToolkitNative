@@ -77,17 +77,17 @@ jobs:
         with:
           dotnet-version: '5.0.100'
 
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v4
         with:
           name: linux-x64
           path: ./linux-x64
 
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v4
         with:
           name: mac-x64
           path: ./mac-x64
 
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v4
         with:
           name: win-x64
           path: ./win-x64
