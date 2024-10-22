@@ -16,7 +16,7 @@ jobs:
         run: make build-linux
 
       - name: Upload artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           if-no-files-found: error
           name: linux-x64
@@ -34,7 +34,7 @@ jobs:
         run: make build-win
 
       - name: Upload artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           if-no-files-found: error
           name: win-x64
@@ -55,7 +55,7 @@ jobs:
         run: make build-macos
 
       - name: Upload artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           if-no-files-found: error
           name: mac-x64
@@ -93,7 +93,7 @@ jobs:
         run: make build-nugets
 
       - name: Upload Nuget package
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: UdpToolkitNative
           if-no-files-found: error
