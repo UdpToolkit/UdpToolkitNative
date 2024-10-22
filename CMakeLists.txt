@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 3.16.3)
 
-if($ENV{TARGET_OS} STREQUAL "macos" OR $ENV{TARGET_OS} STREQUAL "linux" OR $ENV{TARGET_OS} STREQUAL "android-armv8" OR $ENV{TARGET_OS} STREQUAL "android-armv7")
+if(NOT DEFINED TARGET_OS)
+    message(FATAL_ERROR "TARGET_OS is not defined! Please pass the target OS with -DTARGET_OS=<os> (e.g., macos, linux, win).")
+endif()
+
+if(TARGET_OS STREQUAL "macos" OR TARGET_OS STREQUAL "linux")
     project(udp_toolkit_native LANGUAGES C)
     
     add_library(udp_toolkit_native SHARED src/udp_toolkit_native.c)
