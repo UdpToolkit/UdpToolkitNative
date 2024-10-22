@@ -10,7 +10,7 @@ jobs:
       TARGET_OS: linux
     steps:
       - name: Checkout project
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Build
         run: make build-linux
@@ -28,7 +28,7 @@ jobs:
       TARGET_OS: win
     steps:
       - name: Checkout project
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Build
         run: make build-win
@@ -46,7 +46,7 @@ jobs:
       TARGET_OS: macos
     steps:
       - name: Checkout project
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Install cmake
         run: brew  install	cmake
@@ -67,7 +67,7 @@ jobs:
     env:
       DOTNET_SYSTEM_GLOBALIZATION_INVARIANT: 1
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: Setup dotnet
         uses: actions/setup-dotnet@v1
