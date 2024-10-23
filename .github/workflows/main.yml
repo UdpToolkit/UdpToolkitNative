@@ -31,6 +31,9 @@ jobs:
       - name: Checkout project
         uses: actions/checkout@v4
 
+      - name: Install cmake & MinGW
+        run: sudo apt-get update && sudo apt-get -y install cmake && sudo apt-get -y install gcc-mingw-w64-x86-64
+
       - name: Build
         run: make build-win
 
@@ -48,9 +51,6 @@ jobs:
     steps:
       - name: Checkout project
         uses: actions/checkout@v4
-
-      - name: Install cmake
-        run: brew  install	cmake
 
       - name: Build
         run: make build-macos
