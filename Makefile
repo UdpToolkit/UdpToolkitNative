@@ -27,4 +27,4 @@ build-nugets:
 	dotnet pack ./UdpToolkit.Network.Native/UdpToolkit.Network.Native.csproj -c Release -o ./
 
 publish-nugets:
-	dotnet nuget push ./UdpToolkit.Network.Native.$PACKAGE_VERSION.nupkg --api-key $NUGET_KEY --source https://api.nuget.org/v3/index.json
+	dotnet nuget push ./UdpToolkit.Network.Native.$(PACKAGE_VERSION).nupkg --api-key $(NUGET_KEY) --source https://api.nuget.org/v3/index.json

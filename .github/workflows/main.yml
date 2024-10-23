@@ -2,7 +2,7 @@ name: CI
 on: 
   push:
     tags:
-      - 'v*.*.*'
+      - '*.*.*'
 
 jobs:
   linux-x64:
@@ -90,6 +90,10 @@ jobs:
         with:
           name: win-x64
           path: ./win-x64
+
+      - name: Extract version from tag
+        id: extract_tag
+        run: echo "PACKAGE_VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
 
       - name: Build nuget
         run: make build-nugets
