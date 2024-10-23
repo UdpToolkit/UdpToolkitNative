@@ -51,9 +51,6 @@ jobs:
       - name: Checkout project
         uses: actions/checkout@v4
 
-      - name: Install cmake
-        run: brew  install	cmake
-
       - name: Build
         run: make build-macos
 
